@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Lessons - HTML</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <h1>All lessons</h1>
+    </div>
+    <nav>
+      <a href="../index.html">🏠 Main Page</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="lessons-grid">
+      
+      <div class="box lesson-card" id="lesson-1">
+        <div style="font-size: 30px; margin-bottom: 10px;">📄</div>
+        <h3>Lesson 1</h3>
+        <p style="margin: 10px 0; font-size: 14px;">Creating file and writing code.</p>
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+          <a href="lesson1.html" class="btn" style="font-size: 12px;">Wejdź</a>
+          <button class="btn status-btn" onclick="toggleLesson('lesson-1')" style="font-size: 12px;">
+            <span class="icon">❌</span> <span class="text">Niezakończone</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="box lesson-card" id="lesson-2">
+        <div style="font-size: 30px; margin-bottom: 10px;">🏷️</div>
+        <h3>Lesson 2</h3>
+        <p style="margin: 10px 0; font-size: 14px;">Podstawowe znaczniki i ich zastosowanie.</p>
+        <div style="display: flex; gap: 10px; margin-top: 15px;">
+          <a href="#" class="btn" style="font-size: 12px; opacity: 0.5;">Wkrótce</a>
+          <button class="btn status-btn" onclick="toggleLesson('lesson-2')" style="font-size: 12px;">
+            <span class="icon">❌</span> <span class="text">Niezakończone</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function toggleLesson(lessonId) {
+      let isFinished = localStorage.getItem(lessonId) === 'true';
+      isFinished = !isFinished;
+      localStorage.setItem(lessonId, isFinished);
+      updateLessonUI(lessonId, isFinished);
+    }
+
+    // Zmienia kolory i ikony w zależności od stanu w pamięci browsera
+    function updateLessonUI(lessonId, isFinished) {
+      const card = document.getElementById(lessonId);
+      if (!card) return;
+      const icon = card.querySelector('.icon');
+      const text = card.querySelector('.text');
+
+      if (isFinished) {
+        icon.innerText = "✅";
+        text.innerText = "Zakończone";
+        card.classList.add('finished-card');
+      } else {
+        icon.innerText = "❌";
+        text.innerText = "Niezakończone";
+        card.classList.remove('finished-card');
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const allLessonsIds = ['lesson-1', 'lesson-2'];
+      allLessonsIds.forEach(id => {
+        const isFinished = localStorage.getItem(id) === 'true';
+        updateLessonUI(id, isFinished);
+      });
+    });
+  </script>
+
+</body>
+</html>
