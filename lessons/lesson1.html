@@ -5,14 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lekcja 1 - HTML Tutorial</title>
   <link rel="stylesheet" href="../style.css">
+  <style>
+    /* Styl dla rysunkowej ikony pliku ze zdjęcia nr 1 */
+    .file-illustration {
+      width: 100px;
+      height: 120px;
+      background: #fff;
+      border: 4px solid #000;
+      border-radius: 8px;
+      margin: 20px auto;
+      position: relative;
+      box-shadow: 4px 4px 0px #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Zagięty rog kartki */
+    .file-illustration::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 25px;
+      height: 25px;
+      background: #fffde8; /* Kolor tła strony, żeby ukryć róg */
+      border-left: 4px solid #000;
+      border-bottom: 4px solid #000;
+      border-bottom-left-radius: 6px;
+    }
+    .file-name-tag {
+      font-weight: bold;
+      background: #ffeaa7;
+      border: 2px solid #000;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+    .explanation-list {
+      list-style: none;
+      margin: 15px 0;
+    }
+    .explanation-list li {
+      margin-bottom: 10px;
+      padding-left: 15px;
+      border-left: 4px solid #ff9f43;
+    }
+  </style>
 </head>
 <body class="lang-pl">
 
   <header>
     <div class="logo-area">
       <h1>
-        <span class="pl-txt">Lekcja 1</span>
-        <span class="en-txt">Lesson 1</span>
+        <span class="pl-txt">Lekcja 1: Pierwsze Kroki</span>
+        <span class="en-txt">Lesson 1: First Steps</span>
       </h1>
     </div>
     <div style="display: flex; gap: 15px; align-items: center;">
@@ -31,19 +79,37 @@
   </header>
 
   <main class="container">
+    
+    <div class="box" style="text-align: center;">
+      <h2>
+        <span class="pl-txt">1. Stwórz swój pierwszy plik</span>
+        <span class="en-txt">1. Create your first file</span>
+      </h2>
+      
+      <div class="file-illustration">
+        <span style="font-size: 30px;">🌐</span>
+        <div class="file-name-tag">index.html</div>
+      </div>
+
+      <p style="text-align: left; line-height: 1.6; margin-top: 15px;">
+        <span class="pl-txt">Główna strona internetowa musi nazywać się dokładnie <strong>index.html</strong>. Przeglądarki internetowe (takie jak Chrome czy Firefox) zawsze szukają pliku o tej nazwie, kiedy wchodzisz na jakikolwiek adres URL.</span>
+        <span class="en-txt">The main page of any website must be named exactly <strong>index.html</strong>. Web browsers (like Chrome or Firefox) always look for a file with this name when you visit any URL.</span>
+      </p>
+    </div>
+
     <div class="box">
       <h2>
-        <span class="pl-txt">1. Stworzyć plik index.html</span>
-        <span class="en-txt">1. Create index.html file</span>
+        <span class="pl-txt">2. Wklej podstawową strukturę</span>
+        <span class="en-txt">2. Paste the basic structure</span>
       </h2>
-      <p style="margin: 15px 0; line-height: 1.6;">
-        <span class="pl-txt">Aby stworzyć prostą stronę w HTML, musisz najpierw przygotować plik tekstowy i nazwać go dokładnie <strong>index.html</strong>. To będzie główna strona Twojej witryny.</span>
-        <span class="en-txt">To create a simple website in HTML, you must first prepare a text file and name it exactly <strong>index.html</strong>. This will be the main page of your website.</span>
+      <p style="margin: 10px 0; line-height: 1.6;">
+        <span class="pl-txt">Każdy plik HTML potrzebuje kilku podstawowych linijek kodu, aby działał poprawnie. Skopiuj poniższy kod za pomocą przycisku i wklej go do swojego pliku:</span>
+        <span class="en-txt">Every HTML file needs a few basic lines of code to work properly. Copy the code below using the button and paste it into your file:</span>
       </p>
 
       <div class="code-container">
         <div class="code-header">
-          <span>HTML (Gotowy index.html)</span>
+          <span>HTML (index.html)</span>
           <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">
             <span class="pl-txt">📋 Kopiuj</span>
             <span class="en-txt">📋 Copy</span>
@@ -52,14 +118,49 @@
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Moja Pierwsza Strona&lt;/title&gt;
+    &lt;title&gt;HTML For Beginners&lt;/title&gt;
+  &------- Zmień tekst poniżej! -------&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;Witaj świecie!&lt;/h1&gt;
-    &lt;p&gt;To jest moja strona w stylu rysunkowym.&lt;/p&gt;
+    &lt;h1&gt;Witaj Świecie!&lt;/h1&gt;
+    &lt;p&gt;To moja pierwsza strona www.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
       </div>
+    </div>
+
+    <div class="box">
+      <h2>
+        <span class="pl-txt">3. Co oznaczają te znaczniki?</span>
+        <span class="en-txt">3. What do these tags mean?</span>
+      </h2>
+      <p style="margin-bottom: 15px; line-height: 1.6;">
+        <span class="pl-txt">Kod HTML buduje się za pomocą tzw. <strong>znaczników (tags)</strong> ukrytych w nawiasach ostrokątnych <code>&lt; &gt;</code>. Większość z nich musimy otworzyć i zamknąć (za pomocą ukośnika <code>/</code>).</span>
+        <span class="en-txt">HTML code is built using so-called <strong>tags</strong> enclosed in angle brackets <code>&lt; &gt;</code>. Most of them need to be opened and then closed (using a forward slash <code>/</code>).</span>
+      </p>
+
+      <ul class="explanation-list">
+        <li>
+          <strong>&lt;!DOCTYPE html&gt;</strong> - 
+          <span class="pl-txt">Informuje przeglądarkę, że używasz najnowszej wersji języka (HTML5).</span>
+          <span class="en-txt">Informs the browser that you are using the newest version of the language (HTML5).</span>
+        </li>
+        <li>
+          <strong>&lt;html&gt; ... &lt;/html&gt;</strong> - 
+          <span class="pl-txt">To główny kontener. Wszystko, co piszesz, musi znaleźć się pomiędzy tymi znacznikami.</span>
+          <span class="en-txt">The main container. Everything you write must go between these tags.</span>
+        </li>
+        <li>
+          <strong>&lt;head&gt; ... &lt;/head&gt;</strong> - 
+          <span class="pl-txt">"Głowa" strony. Tutaj lądują rzeczy niewidoczne bezpośrednio na ekranie, jak tytuł karty w przeglądarce (<code>&lt;title&gt;</code>).</span>
+          <span class="en-txt">The "head" of the page. This is where things not directly visible on the screen go, like the browser tab title (<code>&lt;title&gt;</code>).</span>
+        </li>
+        <li>
+          <strong>&lt;body&gt; ... &lt;/body&gt;</strong> - 
+          <span class="pl-txt">"Ciało" strony. To tutaj piszesz wszystko, co użytkownik zobaczy na Twojej stronie (teksty, obrazki, linki).</span>
+          <span class="en-txt">The "body" of the page. This is where you write everything the user will actually see on your website (texts, images, links).</span>
+        </li>
+      </ul>
     </div>
 
     <div style="text-align: center; margin-top: 30px;">
@@ -71,7 +172,7 @@
   </main>
 
   <script>
-    // OBSŁUGA JĘZYKA
+    // SYSTEM JĘZYKOWY
     function changeLanguage(lang) {
       localStorage.setItem('site-lang', lang);
       if (lang === 'en') {
@@ -83,7 +184,7 @@
       updateFinishButtonUI();
     }
 
-    // KOPIOWANIE KODU
+    // KOPIOWANIE KODU Do Schowka
     function copyCode(button) {
       const codeBlock = button.parentElement.nextElementSibling;
       const textToCopy = codeBlock.innerText;
@@ -97,11 +198,12 @@
       });
     }
 
-    // UKOŃCZENIE LEKCJI
+    // UKOŃCZENIE LEKCJI (Zapis do LocalStorage)
     function finishCurrentLesson() {
       localStorage.setItem('lesson-1', 'true');
       updateFinishButtonUI();
       
+      // Powrót do listy lekcji po sekundzie
       setTimeout(() => {
         window.location.href = "all-lessons.html";
       }, 1000);
@@ -121,6 +223,7 @@
       }
     }
 
+    // Przywracanie stanu po załadowaniu podstrony
     document.addEventListener("DOMContentLoaded", () => {
       const savedLang = localStorage.getItem('site-lang') || 'pl';
       changeLanguage(savedLang);
