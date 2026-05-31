@@ -6,20 +6,21 @@
   <title>HTML For Beginners</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-  <header>
+<body class="lang-pl"> <header>
     <div class="logo-area">
       <div class="favicon-placeholder">HTML</div>
       <h1>HTML For Beginners</h1>
     </div>
     <div style="display: flex; gap: 15px; align-items: center;">
-      <select class="lang-select">
+      <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
         <option value="pl">PL</option>
         <option value="en">EN</option>
       </select>
       <nav>
-        <a href="lessons/all-lessons.html">All lessons ➔</a>
+        <a href="lessons/all-lessons.html">
+          <span class="pl-txt">Wszystkie lekcje ➔</span>
+          <span class="en-txt">All lessons ➔</span>
+        </a>
       </nav>
     </div>
   </header>
@@ -28,27 +29,47 @@
     <div>
       <div class="box hero-box">
         <h2>Have you ever wanted to make websites easily?</h2>
-        <p style="margin: 15px 0;">Learn to write clean code from scratch the easy way!</p>
-        <a href="lessons/all-lessons.html" class="btn">Start your lessons ➔</a>
+        <p style="margin: 15px 0;">
+          <span class="pl-txt">Naucz się pisać czysty kod od zera w prosty i rysunkowy sposób!</span>
+          <span class="en-txt">Learn to write clean code from scratch the easy way!</span>
+        </p>
+        <a href="lessons/all-lessons.html" class="btn">
+          <span class="pl-txt">Zacznij lekcje ➔</span>
+          <span class="en-txt">Start your lessons ➔</span>
+        </a>
       </div>
 
-      <h2 style="margin-bottom: 15px;">News:</h2>
+      <h2 style="margin-bottom: 15px;">
+        <span class="pl-txt">Nowości:</span>
+        <span class="en-txt">News:</span>
+      </h2>
       
       <div class="box">
         <h3>Lorem ipsum</h3>
-        <p style="color: #555; font-size: 12px; margin-bottom: 5px;">Added: 31.05.2026</p>
-        <p>Check our Discord!.</p>
+        <p style="color: #555; font-size: 12px; margin-bottom: 5px;">
+          <span class="pl-txt">Dodano: 31.05.2026</span>
+          <span class="en-txt">Added: 31.05.2026</span>
+        </p>
+        <p>
+          <span class="pl-txt">Wystartowaliśmy z nowym poradnikiem! Sprawdź pierwszą lekcję i daj znać na Discordzie co myślisz.</span>
+          <span class="en-txt">We have launched a new guide! Check out the first lesson and let us know on Discord what you think.</span>
+        </p>
       </div>
-
-    
+    </div>
 
     <aside>
       <div class="box" style="text-align: center;">
-        <h3>About author:</h3>
+        <h3>
+          <span class="pl-txt">O autorze:</span>
+          <span class="en-txt">About author:</span>
+        </h3>
         <div class="author-avatar">👾</div>
         <h4 style="margin: 10px 0;">Adam</h4>
-        <p style="font-size: 12px; color: #666; margin-bottom: 10px;">Ewenban</p>
-        <p>My bio here.</p>
+        <p style="font-size: 12px; color: #666; margin-bottom: 10px;">AKA Ewenban</p>
+        <p>
+          <span class="pl-txt">Moje bio tutaj. Pasjonat kodowania, twórca stron i gier retro.</span>
+          <span class="en-txt">My bio here. Coding enthusiast, creator of websites and retro games.</span>
+        </p>
       </div>
     </aside>
   </main>
@@ -61,6 +82,31 @@
       <a href="#">Inne linki</a>
     </div>
   </footer>
+
+  <script>
+    function changeLanguage(lang) {
+      // 1. Zapisz wybór w przeglądarce
+      localStorage.setItem('site-lang', lang);
+      
+      // 2. Zmień klasę na tagu body
+      if (lang === 'en') {
+        document.body.classList.remove('lang-pl');
+        document.body.classList.add('lang-en');
+      } else {
+        document.body.classList.remove('lang-en');
+        document.body.classList.add('lang-pl');
+      }
+      
+      // 3. Ustaw poprawną wartość w selectboxie
+      document.getElementById('langSelector').value = lang;
+    }
+
+    // Wywołaj automatycznie przy otwarciu strony, żeby przywrócić zapisany język
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('site-lang') || 'pl'; // Domyślnie PL jeśli czysta pamięć
+      changeLanguage(savedLang);
+    });
+  </script>
 
 </body>
 </html>
