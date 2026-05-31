@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lekcja 1 - HTML Tutorial</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <h1>Lekcja 1</h1>
+    </div>
+    <div style="display: flex; gap: 15px;">
+      <a href="all-lessons.html">📋 All lessons</a>
+      <a href="../index.html">🏠 Main Page</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="box">
+      <h2>1. Stworzyć plik index.html</h2>
+      <p style="margin: 15px 0; line-height: 1.6;">
+        Aby stworzyć prostą stronę w HTML, musisz najpierw przygotować plik tekstowy i nazwać go dokładnie <strong>index.html</strong>. To będzie główna strona Twojej witryny.
+      </p>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span>HTML (Gotowy index.html)</span>
+          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">
+            📋 Kopiuj
+          </button>
+        </div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Moja Pierwsza Strona&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Witaj świecie!&lt;/h1&gt;
+    &lt;p&gt;To jest moja strona w stylu rysunkowym.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <button id="finish-btn" class="btn" style="font-size: 18px; padding: 12px 24px;" onclick="finishCurrentLesson()">
+        Finish (Zaznacz jako ukończone ✔️)
+      </button>
+    </div>
+  </main>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.parentElement.nextElementSibling;
+      const textToCopy = codeBlock.innerText;
+
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const originalText = button.innerText;
+        button.innerText = "✓ Skopiowano!";
+        setTimeout(() => {
+          button.innerText = originalText;
+        }, 2000);
+      });
+    }
+
+    function finishCurrentLesson() {
+      localStorage.setItem('lesson-1', 'true');
+      const btn = document.getElementById('finish-btn');
+      btn.innerText = "Ukończono! 🎉";
+      btn.style.background = "#d4edda";
+      
+      setTimeout(() => {
+        window.location.href = "all-lessons.html";
+      }, 1000);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if(localStorage.getItem('lesson-1') === 'true') {
+        const btn = document.getElementById('finish-btn');
+        btn.innerText = "Ukończono! 🎉";
+        btn.style.background = "#d4edda";
+      }
+    });
+  </script>
+
+</body>
+</html>
