@@ -6,30 +6,47 @@
   <title>Lekcja 1 - HTML Tutorial</title>
   <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body class="lang-pl">
 
   <header>
     <div class="logo-area">
-      <h1>Lekcja 1</h1>
+      <h1>
+        <span class="pl-txt">Lekcja 1</span>
+        <span class="en-txt">Lesson 1</span>
+      </h1>
     </div>
-    <div style="display: flex; gap: 15px;">
-      <a href="all-lessons.html">📋 All lessons</a>
-      <a href="../index.html">🏠 Main Page</a>
+    <div style="display: flex; gap: 15px; align-items: center;">
+      <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
+        <option value="pl">PL</option>
+        <option value="en">EN</option>
+      </select>
+      <nav style="display: flex; gap: 10px;">
+        <a href="all-lessons.html">
+          <span class="pl-txt">📋 Lekcje</span>
+          <span class="en-txt">📋 Lessons</span>
+        </a>
+        <a href="../index.html">🏠 Home</a>
+      </nav>
     </div>
   </header>
 
   <main class="container">
     <div class="box">
-      <h2>1. Stworzyć plik index.html</h2>
+      <h2>
+        <span class="pl-txt">1. Stworzyć plik index.html</span>
+        <span class="en-txt">1. Create index.html file</span>
+      </h2>
       <p style="margin: 15px 0; line-height: 1.6;">
-        Aby stworzyć prostą stronę w HTML, musisz najpierw przygotować plik tekstowy i nazwać go dokładnie <strong>index.html</strong>. To będzie główna strona Twojej witryny.
+        <span class="pl-txt">Aby stworzyć prostą stronę w HTML, musisz najpierw przygotować plik tekstowy i nazwać go dokładnie <strong>index.html</strong>. To będzie główna strona Twojej witryny.</span>
+        <span class="en-txt">To create a simple website in HTML, you must first prepare a text file and name it exactly <strong>index.html</strong>. This will be the main page of your website.</span>
       </p>
 
       <div class="code-container">
         <div class="code-header">
           <span>HTML (Gotowy index.html)</span>
           <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">
-            📋 Kopiuj
+            <span class="pl-txt">📋 Kopiuj</span>
+            <span class="en-txt">📋 Copy</span>
           </button>
         </div>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -47,42 +64,66 @@
 
     <div style="text-align: center; margin-top: 30px;">
       <button id="finish-btn" class="btn" style="font-size: 18px; padding: 12px 24px;" onclick="finishCurrentLesson()">
-        Finish (Zaznacz jako ukończone ✔️)
+        <span class="pl-txt">Finish (Zaznacz jako ukończone ✔️)</span>
+        <span class="en-txt">Finish (Mark as completed ✔️)</span>
       </button>
     </div>
   </main>
 
   <script>
+    // OBSŁUGA JĘZYKA
+    function changeLanguage(lang) {
+      localStorage.setItem('site-lang', lang);
+      if (lang === 'en') {
+        document.body.className = 'lang-en';
+      } else {
+        document.body.className = 'lang-pl';
+      }
+      document.getElementById('langSelector').value = lang;
+      updateFinishButtonUI();
+    }
+
+    // KOPIOWANIE KODU
     function copyCode(button) {
       const codeBlock = button.parentElement.nextElementSibling;
       const textToCopy = codeBlock.innerText;
 
       navigator.clipboard.writeText(textToCopy).then(() => {
-        const originalText = button.innerText;
-        button.innerText = "✓ Skopiowano!";
+        const isEn = localStorage.getItem('site-lang') === 'en';
+        button.innerText = isEn ? "✓ Copied!" : "✓ Skopiowano!";
         setTimeout(() => {
-          button.innerText = originalText;
+          button.innerText = isEn ? "📋 Copy" : "📋 Kopiuj";
         }, 2000);
       });
     }
 
+    // UKOŃCZENIE LEKCJI
     function finishCurrentLesson() {
       localStorage.setItem('lesson-1', 'true');
-      const btn = document.getElementById('finish-btn');
-      btn.innerText = "Ukończono! 🎉";
-      btn.style.background = "#d4edda";
+      updateFinishButtonUI();
       
       setTimeout(() => {
         window.location.href = "all-lessons.html";
       }, 1000);
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      if(localStorage.getItem('lesson-1') === 'true') {
-        const btn = document.getElementById('finish-btn');
-        btn.innerText = "Ukończono! 🎉";
+    function updateFinishButtonUI() {
+      const btn = document.getElementById('finish-btn');
+      const isFinished = localStorage.getItem('lesson-1') === 'true';
+      const isEn = localStorage.getItem('site-lang') === 'en';
+
+      if (isFinished) {
+        btn.innerText = isEn ? "Completed! 🎉" : "Ukończono! 🎉";
         btn.style.background = "#d4edda";
+      } else {
+        btn.innerHTML = isEn ? 'Finish (Mark as completed ✔️)' : 'Finish (Zaznacz jako ukończone ✔️)';
+        btn.style.background = "#fff";
       }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedLang = localStorage.getItem('site-lang') || 'pl';
+      changeLanguage(savedLang);
     });
   </script>
 
