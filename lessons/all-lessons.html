@@ -1,75 +1,52 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Lessons - HTML</title>
+  <title>All Lessons Roadmap</title>
   <link rel="stylesheet" href="../style.css">
 </head>
-<body class="lang-pl">
+<body>
 
   <header>
     <div class="logo-area">
-      <h1>
-        <span class="pl-txt">Wszystkie lekcje</span>
-        <span class="en-txt">All lessons</span>
-      </h1>
+      <h1>📋 All Lessons</h1>
     </div>
-    <div style="display: flex; gap: 15px; align-items: center;">
-      <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
-        <option value="pl">PL</option>
-        <option value="en">EN</option>
-      </select>
-      <nav>
-        <a href="../index.html">
-          <span class="pl-txt">🏠 Strona Główna</span>
-          <span class="en-txt">🏠 Main Page</span>
-        </a>
-      </nav>
-    </div>
+    <nav>
+      <a href="../index.html">🏠 Main Page</a>
+    </nav>
   </header>
 
   <main class="container">
-    <div class="lessons-grid">
-      
-      <div class="box lesson-card" id="lesson-1">
-        <div style="font-size: 30px; margin-bottom: 10px;">📄</div>
-        <h3>
-          <span class="pl-txt">Lekcja 1</span>
-          <span class="en-txt">Lesson 1</span>
-        </h3>
-        <p style="margin: 10px 0; font-size: 14px;">Creating file and writing code.</p>
- <a href="#" class="btn" style="font-size: 12px; opacity: 0.5;">...</a>
+    <h2 style="margin-bottom: 25px;">Your Learning Track:</h2>
 
-<a href="lesson2.html" class="btn" style="font-size: 12px;">
-  <span class="pl-txt">Wejdź</span>
-  <span class="en-txt">Enter</span>
-</a>
-          <button class="btn status-btn" onclick="toggleLesson('lesson-1')" style="font-size: 12px;">
-            <span class="icon">❌</span> 
-            <span class="text pl-txt">Niezakończone</span>
-            <span class="text en-txt">Unfinished</span>
-          </button>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      
+      <div class="box" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <span style="font-size: 30px;">📄</span>
+          <div>
+            <h3 style="font-size: 20px;">Lesson 1</h3>
+            <p style="color: #555; margin-top: 4px;">Creating your first file and writing basic code.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <a href="lesson1.html" class="btn" style="background: #fff;">Enter Lesson</a>
+          <span id="status-l1" class="btn" style="background: #ff7675; cursor: default; box-shadow: none;">❌ Unfinished</span>
         </div>
       </div>
 
-      <div class="box lesson-card" id="lesson-2">
-        <div style="font-size: 30px; margin-bottom: 10px;">🏷️</div>
-        <h3>
-          <span class="pl-txt">Lekcja 2</span>
-          <span class="en-txt">Lesson 2</span>
-        </h3>
-        <p style="margin: 10px 0; font-size: 14px;">Podstawowe znaczniki i ich zastosowanie.</p>
-        <div style="display: flex; gap: 10px; margin-top: 15px;">
-          <a href="#" class="btn" style="font-size: 12px; opacity: 0.5;">
-            <span class="pl-txt">Wkrótce</span>
-            <span class="en-txt">Soon</span>
-          </a>
-          <button class="btn status-btn" onclick="toggleLesson('lesson-2')" style="font-size: 12px;">
-            <span class="icon">❌</span> 
-            <span class="text pl-txt">Niezakończone</span>
-            <span class="text en-txt">Unfinished</span>
-          </button>
+      <div class="box" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+          <span style="font-size: 30px;">🏷️</span>
+          <div>
+            <h3 style="font-size: 20px;">Lesson 2</h3>
+            <p style="color: #555; margin-top: 4px;">Essential structural HTML tags and their attributes.</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <a href="lesson2.html" class="btn" style="background: #fff;">Enter Lesson</a>
+          <span id="status-l2" class="btn" style="background: #ff7675; cursor: default; box-shadow: none;">❌ Unfinished</span>
         </div>
       </div>
 
@@ -77,56 +54,18 @@
   </main>
 
   <script>
-    // OBSŁUGA JĘZYKA
-    function changeLanguage(lang) {
-      localStorage.setItem('site-lang', lang);
-      if (lang === 'en') {
-        document.body.className = 'lang-en';
-      } else {
-        document.body.className = 'lang-pl';
-      }
-      document.getElementById('langSelector').value = lang;
-      
-      // Ponowne odświeżenie napisów na przyciskach statusu
-      const allLessonsIds = ['lesson-1', 'lesson-2'];
-      allLessonsIds.forEach(id => {
-        const isFinished = localStorage.getItem(id) === 'true';
-        updateLessonUI(id, isFinished);
-      });
-    }
-
-    // STATUS LEKCJI (FINISH / UNFINISH)
-    function toggleLesson(lessonId) {
-      let isFinished = localStorage.getItem(lessonId) === 'true';
-      isFinished = !isFinished;
-      localStorage.setItem(lessonId, isFinished);
-      updateLessonUI(lessonId, isFinished);
-    }
-
-    function updateLessonUI(lessonId, isFinished) {
-      const card = document.getElementById(lessonId);
-      if (!card) return;
-      const icon = card.querySelector('.icon');
-      const textPl = card.querySelector('.text.pl-txt');
-      const textEn = card.querySelector('.text.en-txt');
-
-      if (isFinished) {
-        icon.innerText = "✅";
-        if(textPl) textPl.innerText = "Zakończone";
-        if(textEn) textEn.innerText = "Finished";
-        card.classList.add('finished-card');
-      } else {
-        icon.innerText = "❌";
-        if(textPl) textPl.innerText = "Niezakończone";
-        if(textEn) textEn.innerText = "Unfinished";
-        card.classList.remove('finished-card');
-      }
-    }
-
+    // Skrypt sprawdzający w LocalStorage czy lekcje są ukończone
     document.addEventListener("DOMContentLoaded", () => {
-      // Załaduj język
-      const savedLang = localStorage.getItem('site-lang') || 'pl';
-      changeLanguage(savedLang);
+      if (localStorage.getItem("lesson-1-finished") === "true") {
+        const badge = document.getElementById("status-l1");
+        badge.innerText = "✔️ Finished";
+        badge.style.backgroundColor = "#55efc4";
+      }
+      if (localStorage.getItem("lesson-2-finished") === "true") {
+        const badge = document.getElementById("status-l2");
+        badge.innerText = "✔️ Finished";
+        badge.style.backgroundColor = "#55efc4";
+      }
     });
   </script>
 
