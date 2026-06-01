@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boilerplate - Code Book</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <h1>📖 Code Book: Boilerplate</h1>
+    </div>
+    <nav>
+      <a href="../codebook.html">📋 Snippets List</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="box">
+      <h2>HTML Boilerplate Structure</h2>
+      <p style="margin: 15px 0; line-height: 1.6;">
+        This template is the mandatory foundation of any website. Without these basic structural brackets, modern internet browsers won't be able to render your content, texts, or scripts correctly.
+      </p>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span>Code Window</span>
+          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Website Framework&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- All your visible text tags go here --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+      
+      <p style="font-size: 14px; color: #555; font-style: italic;">Tip: Click the Copy button above and paste it directly into your Workspace area to test it out!</p>
+    </div>
+  </main>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.parentElement.nextElementSibling;
+      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+        button.innerText = "✓ Copied!";
+        setTimeout(() => { button.innerText = "📋 Copy"; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
