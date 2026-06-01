@@ -13,23 +13,19 @@
     }
     header {
       background-color: #ff9f43;
-      padding: 15px;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 5px solid #000;
     }
-    header h1 { margin: 0; font-size: 24px; }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+    header h1 { margin: 0; font-size: 28px; font-weight: bold; }
+    .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
     .box {
       background: #fff;
       border: 4px solid #000;
       border-radius: 12px;
-      padding: 25px;
+      padding: 30px;
       margin-bottom: 25px;
       box-shadow: 6px 6px 0px #000;
     }
@@ -38,64 +34,65 @@
       font-weight: bold;
       text-decoration: none;
       color: #000;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: 3px solid #000;
       border-radius: 8px;
-      box-shadow: 3px 3px 0px #000;
-      cursor: pointer;
+      box-shadow: 4px 4px 0px #000;
       background: #fff;
+      cursor: pointer;
+      font-size: 15px;
     }
-    .btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px #000;
-    }
-    .code-box {
+    .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px #000; }
+    .code-container {
       background: #f1f2f6;
       border: 3px solid #000;
       border-radius: 8px;
-      padding: 15px;
-      font-family: monospace;
+      padding: 20px;
       margin: 20px 0;
-      position: relative;
+    }
+    .task-box {
+      background: #fffde8;
+      padding: 20px;
+      border: 3px solid #000;
+      border-left: 8px solid #ff9f43;
+      border-radius: 6px;
+      margin-top: 25px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div>
-      <h1>Lesson 2</h1>
-    </div>
-    <div style="display: flex; gap: 10px;">
-      <a href="../workspace.html" class="btn" style="background: #ffeaa7;">Work space</a>
-      <a href="all-lessons.html" class="btn">All lessons</a>
+    <div><h1>Lesson 2</h1></div>
+    <div style="display: flex; gap: 15px;">
+      <a href="../workspace.html" class="btn" style="background: #ffeaa7;">🛠️ Workspace</a>
+      <a href="all-lessons.html" class="btn">📋 All lessons</a>
     </div>
   </header>
 
   <main class="container">
-    
     <div class="box">
-      <h2 style="margin-top: 0;">Basic Elements & Structural Tags</h2>
-      <p style="line-height: 1.6; font-size: 16px;">
-        HTML tags act like container brackets around texts. They tell the browser whether a piece of text is a title, a paragraph, or a structure link.
+      <h2 style="margin-top: 0; font-size: 24px;">Basic Elements & Structural Tags</h2>
+      <p style="line-height: 1.7; font-size: 16px;">
+        HTML tags act like container brackets around texts. They tell the browser whether a piece of text is a heading or a regular block paragraph.
       </p>
 
-      <h3 style="margin-top: 25px; margin-bottom: 10px;">1. Headings (&lt;h1&gt; to &lt;h6&gt;)</h3>
-      <p style="line-height: 1.6; margin: 0 0 15px 0;">
-        Headings establish hierarchy. <code>&lt;h1&gt;</code> represents the most important main heading on the page.
+      <h3 style="margin-top: 25px; margin-bottom: 5px; font-size: 18px;">1. Headings (&lt;h1&gt; to &lt;h6&gt;)</h3>
+      <p style="line-height: 1.7; margin: 0 0 15px 0;">
+        Headings establish hierarchy. <code>&lt;h1&gt;</code> represents the main heading on the page.
       </p>
 
-      <h3 style="margin-top: 25px; margin-bottom: 10px;">2. Paragraphs (&lt;p&gt;)</h3>
-      <p style="line-height: 1.6; margin: 0 0 15px 0;">
-        The <code>&lt;p&gt;</code> tag is used for blocks of standard text. Each new paragraph starts on a clean new line.
+      <h3 style="margin-top: 25px; margin-bottom: 5px; font-size: 18px;">2. Paragraphs (&lt;p&gt;)</h3>
+      <p style="line-height: 1.7; margin: 0 0 15px 0;">
+        The <code>&lt;p&gt;</code> tag is used for blocks of standard text. Each paragraph starts on a new line.
       </p>
 
-      <div class="code-box">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 10px;">
+      <div class="code-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 15px;">
           <span style="font-weight: bold;">HTML Snippet Box</span>
-          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">Copy Code</button>
+          <button class="btn" style="padding: 5px 10px; font-size: 13px; box-shadow: none;" onclick="copySnippet(this)">Copy Code</button>
         </div>
-        <pre id="codeBlock" style="margin: 0; font-size: 14px;">&lt;!DOCTYPE html&gt;
+        <pre id="snippet" style="margin: 0; font-size: 14px; font-family: monospace;">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;body&gt;
     &lt;h1&gt;Welcome to My First Website!&lt;/h1&gt;
@@ -104,46 +101,40 @@
 &lt;/html&gt;</pre>
       </div>
 
-      <div style="background: #fffde8; padding: 15px; border-left: 6px solid #ff9f43; border-top: 3px solid #000; border-right: 3px solid #000; border-bottom: 3px solid #000; border-radius: 4px; margin-top: 25px;">
+      <div class="task-box">
         <strong>Your Second Task:</strong> Click the "Copy Code" button, paste it into your Workspace editor component, and view the preview rendering output!
       </div>
     </div>
 
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #fff;">
-      <span style="font-weight: bold;">Finished reading and experimenting?</span>
+    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #fff; flex-wrap: wrap; gap: 20px;">
+      <span style="font-weight: bold; font-size: 16px;">Finished reading and experimenting?</span>
       <button id="finishBtn" class="btn" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
     </div>
-
   </main>
 
   <script>
-    function copyCode(btn) {
-      const text = document.getElementById("codeBlock").innerText;
+    function copySnippet(btn) {
+      const text = document.getElementById("snippet").innerText;
       navigator.clipboard.writeText(text).then(() => {
         btn.innerText = "✓ Copied!";
         setTimeout(() => { btn.innerText = "Copy Code"; }, 2000);
       });
     }
-
     function markFinished() {
       localStorage.setItem("lesson-2-finished", "true");
-      setupFinishedState();
+      applyFinishedStyle();
     }
-
-    function setupFinishedState() {
+    function applyFinishedStyle() {
       const btn = document.getElementById("finishBtn");
       btn.innerText = "Lesson Completed! ✔️";
       btn.style.backgroundColor = "#55efc4";
       btn.disabled = true;
       btn.style.cursor = "default";
+      btn.style.boxShadow = "none";
     }
-
     document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("lesson-2-finished") === "true") {
-        setupFinishedState();
-      }
+      if (localStorage.getItem("lesson-2-finished") === "true") { applyFinishedStyle(); }
     });
   </script>
-
 </body>
 </html>
