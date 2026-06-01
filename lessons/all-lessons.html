@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Lessons Roadmap</title>
+  <title>All Lessons - HTML For Beginners</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -18,7 +18,7 @@
   </header>
 
   <main class="container">
-    <h2 style="margin-bottom: 25px;">Your Learning Track:</h2>
+    <h2 style="margin-bottom: 25px; font-family: monospace;">Your Learning Track:</h2>
 
     <div style="display: flex; flex-direction: column; gap: 20px;">
       
@@ -30,9 +30,9 @@
             <p style="color: #555; margin-top: 4px;">Creating your first file and writing basic code.</p>
           </div>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <a href="lesson1.html" class="btn" style="background: #fff;">Enter Lesson</a>
-          <span id="status-l1" class="btn" style="background: #ff7675; cursor: default; box-shadow: none;">❌ Unfinished</span>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a href="lesson1.html" class="btn" style="background: #fff; text-decoration: none;">Enter Lesson</a>
+          <span id="status-l1" class="btn" style="background: #ff7675; cursor: default; box-shadow: none; border-color: #000; color: #000;">❌ Unfinished</span>
         </div>
       </div>
 
@@ -41,12 +41,12 @@
           <span style="font-size: 30px;">🏷️</span>
           <div>
             <h3 style="font-size: 20px;">Lesson 2</h3>
-            <p style="color: #555; margin-top: 4px;">Essential structural HTML tags and their attributes.</p>
+            <p style="color: #555; margin-top: 4px;">Essential structural HTML tags and text elements.</p>
           </div>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
-          <a href="lesson2.html" class="btn" style="background: #fff;">Enter Lesson</a>
-          <span id="status-l2" class="btn" style="background: #ff7675; cursor: default; box-shadow: none;">❌ Unfinished</span>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a href="lesson2.html" class="btn" style="background: #fff; text-decoration: none;">Enter Lesson</a>
+          <span id="status-l2" class="btn" style="background: #ff7675; cursor: default; box-shadow: none; border-color: #000; color: #000;">❌ Unfinished</span>
         </div>
       </div>
 
@@ -54,17 +54,17 @@
   </main>
 
   <script>
-    // Skrypt sprawdzający w LocalStorage czy lekcje są ukończone
+    // Skrypt odczytujący stan z LocalStorage po załadowaniu strony spisu
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("lesson-1-finished") === "true") {
-        const badge = document.getElementById("status-l1");
-        badge.innerText = "✔️ Finished";
-        badge.style.backgroundColor = "#55efc4";
+        const badge1 = document.getElementById("status-l1");
+        badge1.innerText = "✔️ Finished";
+        badge1.style.backgroundColor = "#55efc4";
       }
       if (localStorage.getItem("lesson-2-finished") === "true") {
-        const badge = document.getElementById("status-l2");
-        badge.innerText = "✔️ Finished";
-        badge.style.backgroundColor = "#55efc4";
+        const badge2 = document.getElementById("status-l2");
+        badge2.innerText = "✔️ Finished";
+        badge2.style.backgroundColor = "#55efc4";
       }
     });
   </script>
