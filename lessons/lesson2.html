@@ -19,15 +19,15 @@
       align-items: center;
       border-bottom: 5px solid #000;
     }
-    header h1 { margin: 0; font-size: 28px; font-weight: bold; }
+    header h1 { margin: 0; font-size: 26px; font-weight: bold; }
     .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
     .box {
       background: #fff;
-      border: 4px solid #000;
-      border-radius: 12px;
+      border: 5px solid #000;
+      border-radius: 16px;
       padding: 30px;
       margin-bottom: 25px;
-      box-shadow: 6px 6px 0px #000;
+      box-shadow: 8px 8px 0px #000;
     }
     .btn {
       font-family: 'Courier New', Courier, monospace;
@@ -65,8 +65,8 @@
   <header>
     <div><h1>Lesson 2</h1></div>
     <div style="display: flex; gap: 15px;">
-      <a href="../workspace.html" class="btn" style="background: #ffeaa7;">🛠️ Workspace</a>
-      <a href="all-lessons.html" class="btn">📋 All lessons</a>
+      <a href="../workspace.html" class="btn" style="background: #ffeaa7;">Workspace</a>
+      <a href="all-lessons.html" class="btn">All lessons</a>
     </div>
   </header>
 
@@ -108,7 +108,7 @@
 
     <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #fff; flex-wrap: wrap; gap: 20px;">
       <span style="font-weight: bold; font-size: 16px;">Finished reading and experimenting?</span>
-      <button id="finishBtn" class="btn" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
+      <button id="finishBtn" class="btn" style="background: #2ecc71;" onclick="markFinished()">Lesson Completed! ✔️</button>
     </div>
   </main>
 
@@ -122,18 +122,20 @@
     }
     function markFinished() {
       localStorage.setItem("lesson-2-finished", "true");
-      applyFinishedStyle();
+      applyFinishedState();
     }
-    function applyFinishedStyle() {
+    function applyFinishedState() {
       const btn = document.getElementById("finishBtn");
-      btn.innerText = "Lesson Completed! ✔️";
-      btn.style.backgroundColor = "#55efc4";
-      btn.disabled = true;
-      btn.style.cursor = "default";
-      btn.style.boxShadow = "none";
+      if (btn) {
+        btn.innerText = "Lesson Completed! ✔️";
+        btn.style.backgroundColor = "#2ecc71";
+        btn.style.boxShadow = "none";
+      }
     }
     document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("lesson-2-finished") === "true") { applyFinishedStyle(); }
+      if (localStorage.getItem("lesson-2-finished") === "true") {
+        applyFinishedState();
+      }
     });
   </script>
 </body>
