@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Lessons</title>
+  <title>All Lessons - HTML For Beginners</title>
   <style>
-    /* Zachowujemy Twój unikalny styl rysunkowy retro-cartoon z grubymi obramowaniami */
     body {
       background-color: #fcfbf2;
       font-family: 'Courier New', Courier, monospace;
@@ -14,7 +13,7 @@
     }
     header {
       background-color: #ff9f43;
-      padding: 15px;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -22,7 +21,8 @@
     }
     header h1 {
       margin: 0;
-      font-size: 24px;
+      font-size: 28px;
+      font-weight: bold;
     }
     .container {
       max-width: 1000px;
@@ -33,28 +33,57 @@
       background: #fff;
       border: 4px solid #000;
       border-radius: 12px;
-      padding: 20px;
+      padding: 20px 30px;
       margin-bottom: 25px;
       box-shadow: 6px 6px 0px #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .lesson-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .lesson-icon {
+      font-size: 35px;
+    }
+    .lesson-title {
+      margin: 0;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    .lesson-desc {
+      margin: 5px 0 0 0;
+      color: #555;
+      font-size: 14px;
+    }
+    .actions-area {
+      display: flex;
+      gap: 15px;
+      align-items: center;
     }
     .btn {
       font-family: 'Courier New', Courier, monospace;
       font-weight: bold;
       text-decoration: none;
       color: #000;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border: 3px solid #000;
       border-radius: 8px;
-      box-shadow: 3px 3px 0px #000;
+      box-shadow: 4px 4px 0px #000;
+      background: #fff;
       cursor: pointer;
-      transition: all 0.1s ease;
+      font-size: 15px;
     }
     .btn:active {
       transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px #000;
+      box-shadow: 2px 2px 0px #000;
     }
     .status-btn {
-      min-width: 140px;
+      min-width: 150px;
       text-align: center;
     }
   </style>
@@ -62,83 +91,70 @@
 <body>
 
   <header>
-    <div>
-      <h1>📋 All Lessons</h1>
-    </div>
-    <div style="display: flex; gap: 10px;">
-      <a href="../index.html" class="btn" style="background: #fff;">🏠 Main Page</a>
-    </div>
+    <div><h1>📋 All Lessons</h1></div>
+    <div><a href="../index.html" class="btn"> Strona Główna / Main Page 🏠</a></div>
   </header>
 
   <main class="container">
-    <h2 style="margin-bottom: 25px; font-weight: bold;">Your Learning Track:</h2>
+    <h2 style="margin-bottom: 30px; font-weight: bold; font-size: 24px;">Your Learning Track:</h2>
 
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <span style="font-size: 35px;">📄</span>
+    <div class="box">
+      <div class="lesson-info">
+        <span class="lesson-icon">📄</span>
         <div>
-          <h3 style="margin: 0; font-size: 20px;">Lesson 1</h3>
-          <p style="margin: 5px 0 0 0; color: #555;">Creating your first file and writing basic code.</p>
+          <h3 class="lesson-title">Lesson 1</h3>
+          <p class="lesson-desc">Creating your first file and writing basic code.</p>
         </div>
       </div>
-      <div style="display: flex; gap: 15px; align-items: center;">
-        <a href="lesson1.html" class="btn" style="background: #fff;">Enter Lesson</a>
+      <div class="actions-area">
+        <a href="lesson1.html" class="btn">Enter Lesson</a>
         <button id="status-l1" class="btn status-btn" style="background: #ff7675;" onclick="toggleLesson(1)">❌ Unfinished</button>
       </div>
     </div>
 
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <span style="font-size: 35px;">🏷️</span>
+    <div class="box">
+      <div class="lesson-info">
+        <span class="lesson-icon">🏷️</span>
         <div>
-          <h3 style="margin: 0; font-size: 20px;">Lesson 2</h3>
-          <p style="margin: 5px 0 0 0; color: #555;">Essential structural HTML tags and their attributes.</p>
+          <h3 class="lesson-title">Lesson 2</h3>
+          <p class="lesson-desc">Essential structural HTML tags and their attributes.</p>
         </div>
       </div>
-      <div style="display: flex; gap: 15px; align-items: center;">
-        <a href="lesson2.html" class="btn" style="background: #fff;">Enter Lesson</a>
+      <div class="actions-area">
+        <a href="lesson2.html" class="btn">Enter Lesson</a>
         <button id="status-l2" class="btn status-btn" style="background: #ff7675;" onclick="toggleLesson(2)">❌ Unfinished</button>
       </div>
     </div>
   </main>
 
   <script>
-    // Funkcja wywoływana przy kliknięciu przycisku statusu na liście
     function toggleLesson(id) {
-      const storageKey = `lesson-${id}-finished`;
-      const button = document.getElementById(`status-l` + id);
-      
-      // Sprawdzamy aktualny stan i przełączamy na odwrót (odklikiwanie!)
-      if (localStorage.getItem(storageKey) === "true") {
-        // Jeśli było ukończone -> ustawiamy na nieukończone
-        localStorage.setItem(storageKey, "false");
-        button.innerText = "❌ Unfinished";
-        button.style.backgroundColor = "#ff7675";
+      const key = `lesson-${id}-finished`;
+      const btn = document.getElementById(`status-l${id}`);
+      if (localStorage.getItem(key) === "true") {
+        localStorage.setItem(key, "false");
+        btn.innerText = "❌ Unfinished";
+        btn.style.backgroundColor = "#ff7675";
       } else {
-        // Jeśli było nieukończone -> ustawiamy na ukończone
-        localStorage.setItem(storageKey, "true");
-        button.innerText = "✔️ Finished";
-        button.style.backgroundColor = "#55efc4";
+        localStorage.setItem(key, "true");
+        btn.innerText = "✔️ Finished";
+        btn.style.backgroundColor = "#55efc4";
       }
     }
 
-    // Funkcja ładująca stany z pamięci przy uruchomieniu strony
-    function updateButtonsOnLoad() {
+    function loadStatuses() {
       for (let id = 1; id <= 2; id++) {
-        const button = document.getElementById(`status-l` + id);
+        const btn = document.getElementById(`status-l${id}`);
         if (localStorage.getItem(`lesson-${id}-finished`) === "true") {
-          button.innerText = "✔️ Finished";
-          button.style.backgroundColor = "#55efc4";
+          btn.innerText = "✔️ Finished";
+          btn.style.backgroundColor = "#55efc4";
         } else {
-          button.innerText = "❌ Unfinished";
-          button.style.backgroundColor = "#ff7675";
+          btn.innerText = "❌ Unfinished";
+          btn.style.backgroundColor = "#ff7675";
         }
       }
     }
-
-    // Uruchomienie sprawdzania po załadowaniu dokumentu
-    document.addEventListener("DOMContentLoaded", updateButtonsOnLoad);
+    document.addEventListener("DOMContentLoaded", loadStatuses);
   </script>
-
 </body>
 </html>
