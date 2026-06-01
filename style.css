@@ -31,9 +31,9 @@ body {
   background: #ffb061;
 }
 
-/* --- WSPÓLNE KOMPONENTY (Styl Bazabajki) --- */
+/* --- WSPÓLNE KOMPONENTY (Styl Retro / Komiks) --- */
 .container {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -98,15 +98,6 @@ nav a:active, .btn:active {
   box-shadow: 1px 1px 0px #000;
 }
 
-.lang-select {
-  border: 3px solid #000;
-  padding: 5px;
-  border-radius: 8px;
-  font-weight: bold;
-  background: #fff;
-  cursor: pointer;
-}
-
 /* --- STRONA GŁÓWNA LAYOUT --- */
 .main-layout {
   display: grid;
@@ -135,11 +126,6 @@ nav a:active, .btn:active {
   justify-content: center;
   font-size: 24px;
 }
-
-/* --- SYSTEM JĘZYKOWY --- */
-/* Ukrywamy elementy, które nie pasują do wybranego języka */
-body.lang-pl .en-txt { display: none !important; }
-body.lang-en .pl-txt { display: none !important; }
 
 /* --- SPIS LEKCJI GRID --- */
 .lessons-grid {
@@ -177,6 +163,79 @@ body.lang-en .pl-txt { display: none !important; }
   overflow-x: auto;
   color: #00ff00;
   font-family: monospace;
+}
+
+/* --- WORKSPACE LAYOUT (NOWOŚĆ) --- */
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .workspace-grid { grid-template-columns: 1fr; height: auto; }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 4px solid #000;
+  border-radius: 12px;
+  box-shadow: 5px 5px 0px #000;
+  overflow: hidden;
+}
+
+.panel-header {
+  background: #ffeaa7;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-bottom: 4px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.workspace-textarea {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  border: none;
+  resize: none;
+  font-family: monospace;
+  font-size: 14px;
+  outline: none;
+  background: #fafafa;
+}
+
+.preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* Okno modalne Code Book */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  border: 4px solid #000;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 8px 8px 0px #000;
 }
 
 /* --- STOPKA --- */
