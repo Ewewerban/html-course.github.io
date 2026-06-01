@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesson 2 - Core Tags</title>
+  <title>Lesson 2 - Essential Core Tags</title>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -12,23 +12,32 @@
     <div class="logo-area">
       <h1>Lesson 2</h1>
     </div>
-    <nav>
-      <a href="../workspace.html" target="_blank" style="background: #ffeaa7;">🛠️ Open Workspace</a>
+    <nav style="display: flex; gap: 10px;">
+      <a href="../workspace.html" style="background: #ffeaa7;">🛠️ Workspace</a>
       <a href="all-lessons.html">📋 All lessons</a>
     </nav>
   </header>
 
   <main class="container">
     <div class="box">
-      <h2>Basic Elements & Tags</h2>
-      <p style="margin: 15px 0; line-height: 1.6;">
-        HTML tags act like container brackets around texts. Headings (<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>) define structural topics, while paragraphs (<code>&lt;p&gt;</code>) hold regular text blocks.
+      <h2>Basic Elements & Structural Tags</h2>
+      <p style="margin: 15px 0; line-height: 1.6; font-size: 15px;">
+        HTML tags act like container brackets around texts. Headings (ranging from <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>) define structural topics, while paragraphs (<code>&lt;p&gt;</code>) hold your regular text blocks. 
+      </p>
+
+      <div style="background: #f1f2f6; padding: 15px; border: 3px solid #000; border-radius: 8px; font-family: monospace; margin: 20px 0;">
+        &lt;h1&gt;This is a Main Heading&lt;/h1&gt;<br>
+        &lt;p&gt;This is a text paragraph containing information.&lt;/p&gt;
+      </div>
+
+      <p style="line-height: 1.6; font-size: 15px;">
+        <strong>Task:</strong> Copy these core tags into your workspace editor component and watch how the preview box renders them dynamically!
       </p>
     </div>
 
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc;">
-      <span>Finished reading and experimenting?</span>
-      <button id="finishBtn" class="btn" style="background: #fff;" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
+    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #fffde8; flex-wrap: wrap; gap: 15px;">
+      <span style="font-weight: bold;">Finished reading and experimenting?</span>
+      <button id="finishBtn" class="btn" style="background: #fff; font-size: 14px;" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
     </div>
   </main>
 
@@ -39,6 +48,7 @@
       btn.innerText = "Lesson Completed! ✔️";
       btn.style.backgroundColor = "#55efc4";
       btn.disabled = true;
+      btn.style.cursor = "default";
     }
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -47,6 +57,7 @@
         btn.innerText = "Lesson Completed! ✔️";
         btn.style.backgroundColor = "#55efc4";
         btn.disabled = true;
+        btn.style.cursor = "default";
       }
     });
   </script>
