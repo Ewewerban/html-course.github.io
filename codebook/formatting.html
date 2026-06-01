@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formatting - Code Book</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo-area">
+      <h1>📖 Code Book: Text Formatting</h1>
+    </div>
+    <nav>
+      <a href="../codebook.html">📋 Snippets List</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="box">
+      <h2>Text Formatting Tags</h2>
+      <p style="margin: 15px 0; line-height: 1.6;">
+        Use headings to establish clean content hierarchies, paragraphs for regular text, and bold or italic elements to emphasize important context words within your viewport layouts.
+      </p>
+
+      <div class="code-container">
+        <div class="code-header">
+          <span>Code Window</span>
+          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">📋 Copy</button>
+        </div>
+<pre><code>&lt;h1&gt;Main Big Topic&lt;/h1&gt;
+&lt;h2&gt;Sub-section Topic&lt;/h2&gt;
+&lt;p&gt;You can easily make words &lt;b&gt;bolded&lt;/b&gt; or &lt;i&gt;italicized&lt;/i&gt;.&lt;/p&gt;</code></pre>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function copyCode(button) {
+      const codeBlock = button.parentElement.nextElementSibling;
+      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+        button.innerText = "✓ Copied!";
+        setTimeout(() => { button.innerText = "📋 Copy"; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
