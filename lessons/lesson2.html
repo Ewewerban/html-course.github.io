@@ -3,117 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lesson 2 - HTML Tutorial</title>
+  <title>Lesson 2 - Core Tags</title>
   <link rel="stylesheet" href="../style.css">
-  <style>
-    .headings-visual {
-      background: #fff9e6;
-      border: 3px dashed #000;
-      border-radius: 8px;
-      padding: 15px;
-      margin: 20px 0;
-    }
-    .headings-visual h1 { font-size: 28px; margin-bottom: 5px; color: #ff9f43; }
-    .headings-visual h2 { font-size: 22px; margin-bottom: 5px; }
-    .headings-visual h3 { font-size: 18px; margin-bottom: 5px; }
-    .headings-visual span { font-size: 12px; color: #666; font-family: monospace; }
-    .tag-badge {
-      background: #ffeaa7;
-      border: 2px solid #000;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: monospace;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
 
   <header>
     <div class="logo-area">
-      <h1>Lesson 2: Text & Headings</h1>
+      <h1>Lesson 2</h1>
     </div>
-    <nav style="display: flex; gap: 10px;">
-      <a href="all-lessons.html">📋 All Lessons</a>
-      <a href="../index.html">🏠 Home</a>
+    <nav>
+      <a href="../workspace.html" target="_blank" style="background: #ffeaa7;">🛠️ Open Workspace</a>
+      <a href="all-lessons.html">📋 All lessons</a>
     </nav>
   </header>
 
   <main class="container">
-    
     <div class="box">
-      <h2>1. Headings (h1 - h6)</h2>
-      <p style="line-height: 1.6; margin-top: 10px;">
-        To create titles and subtitles on a page, we use tags from <span class="tag-badge">&lt;h1&gt;</span> to <span class="tag-badge">&lt;h6&gt;</span>. Remember the golden rule: the larger the number inside the tag, the smaller the text looks on screen!
+      <h2>Basic Elements & Tags</h2>
+      <p style="margin: 15px 0; line-height: 1.6;">
+        HTML tags act like container brackets around texts. Headings (<code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>) define structural topics, while paragraphs (<code>&lt;p&gt;</code>) hold regular text blocks.
       </p>
-
-      <div class="headings-visual">
-        <h1>&lt;h1&gt; Main Page Title <span>(Biggest importance)</span></h1>
-        <h2>&lt;h2&gt; Section Subtitle <span>(Medium)</span></h2>
-        <h3>&lt;h3&gt; Tiny subheader <span>(Small)</span></h3>
-      </div>
     </div>
 
-    <div class="box">
-      <h2>2. Paragraphs and formatting</h2>
-      <p style="line-height: 1.6; margin-top: 10px;">
-        For common blocks of text we use the paragraph tag <span class="tag-badge">&lt;p&gt;</span>. You can also styles separate words inside using:
-      </p>
-      <div style="margin-top: 15px; display: grid; gap: 10px;">
-        <div><span class="tag-badge">&lt;b&gt;</span> ➔ <strong>Bold</strong> text wrapper</div>
-        <div><span class="tag-badge">&lt;i&gt;</span> ➔ <em>Italicized</em> cursive text</div>
-      </div>
-    </div>
-
-    <div class="box">
-      <h2>3. Code Example</h2>
-      <div class="code-container">
-        <div class="code-header">
-          <span>HTML Editor Content</span>
-          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">📋 Copy</button>
-        </div>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Headings Test&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Welcome to my site&lt;/h1&gt;
-    &lt;p&gt;This text contains &lt;b&gt;bolded&lt;/b&gt; letters.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 30px;">
-      <button id="finish-btn" class="btn" style="font-size: 18px; padding: 12px 24px;" onclick="finishCurrentLesson()">
-        Finish (Mark as completed ✔️)
-      </button>
+    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc;">
+      <span>Finished reading and experimenting?</span>
+      <button id="finishBtn" class="btn" style="background: #fff;" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
     </div>
   </main>
 
   <script>
-    function copyCode(button) {
-      const codeBlock = button.parentElement.nextElementSibling;
-      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-        button.innerText = "✓ Copied!";
-        setTimeout(() => { button.innerText = "📋 Copy"; }, 2000);
-      });
-    }
-
-    function finishCurrentLesson() {
-      localStorage.setItem('lesson-2', 'true');
-      const btn = document.getElementById('finish-btn');
-      btn.innerText = "Completed! 🎉";
-      btn.style.background = "#d4edda";
-      setTimeout(() => { window.location.href = "all-lessons.html"; }, 1000);
+    function markFinished() {
+      localStorage.setItem("lesson-2-finished", "true");
+      const btn = document.getElementById("finishBtn");
+      btn.innerText = "Lesson Completed! ✔️";
+      btn.style.backgroundColor = "#55efc4";
+      btn.disabled = true;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      if(localStorage.getItem('lesson-2') === 'true') {
-        const btn = document.getElementById('finish-btn');
-        btn.innerText = "Completed! 🎉";
-        btn.style.background = "#d4edda";
+      if (localStorage.getItem("lesson-2-finished") === "true") {
+        const btn = document.getElementById("finishBtn");
+        btn.innerText = "Lesson Completed! ✔️";
+        btn.style.backgroundColor = "#55efc4";
+        btn.disabled = true;
       }
     });
   </script>
