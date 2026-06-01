@@ -1,232 +1,120 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lekcja 1 - HTML Tutorial</title>
+  <title>Lesson 2 - HTML Tutorial</title>
   <link rel="stylesheet" href="../style.css">
   <style>
-    /* Styl dla rysunkowej ikony pliku ze zdjęcia nr 1 */
-    .file-illustration {
-      width: 100px;
-      height: 120px;
-      background: #fff;
-      border: 4px solid #000;
+    .headings-visual {
+      background: #fff9e6;
+      border: 3px dashed #000;
       border-radius: 8px;
-      margin: 20px auto;
-      position: relative;
-      box-shadow: 4px 4px 0px #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 15px;
+      margin: 20px 0;
     }
-    /* Zagięty rog kartki */
-    .file-illustration::after {
-      content: '';
-      position: absolute;
-      top: -4px;
-      right: -4px;
-      width: 25px;
-      height: 25px;
-      background: #fffde8; /* Kolor tła strony, żeby ukryć róg */
-      border-left: 4px solid #000;
-      border-bottom: 4px solid #000;
-      border-bottom-left-radius: 6px;
-    }
-    .file-name-tag {
-      font-weight: bold;
+    .headings-visual h1 { font-size: 28px; margin-bottom: 5px; color: #ff9f43; }
+    .headings-visual h2 { font-size: 22px; margin-bottom: 5px; }
+    .headings-visual h3 { font-size: 18px; margin-bottom: 5px; }
+    .headings-visual span { font-size: 12px; color: #666; font-family: monospace; }
+    .tag-badge {
       background: #ffeaa7;
       border: 2px solid #000;
       padding: 2px 6px;
       border-radius: 4px;
-      margin-top: 10px;
-      font-size: 12px;
-    }
-    .explanation-list {
-      list-style: none;
-      margin: 15px 0;
-    }
-    .explanation-list li {
-      margin-bottom: 10px;
-      padding-left: 15px;
-      border-left: 4px solid #ff9f43;
+      font-family: monospace;
+      font-weight: bold;
     }
   </style>
 </head>
-<body class="lang-pl">
+<body>
 
   <header>
     <div class="logo-area">
-      <h1>
-        <span class="pl-txt">Lekcja 1: Pierwsze Kroki</span>
-        <span class="en-txt">Lesson 1: First Steps</span>
-      </h1>
+      <h1>Lesson 2: Text & Headings</h1>
     </div>
-    <div style="display: flex; gap: 15px; align-items: center;">
-      <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
-        <option value="pl">PL</option>
-        <option value="en">EN</option>
-      </select>
-      <nav style="display: flex; gap: 10px;">
-        <a href="all-lessons.html">
-          <span class="pl-txt">📋 Lekcje</span>
-          <span class="en-txt">📋 Lessons</span>
-        </a>
-        <a href="../index.html">🏠 Home</a>
-      </nav>
-    </div>
+    <nav style="display: flex; gap: 10px;">
+      <a href="all-lessons.html">📋 All Lessons</a>
+      <a href="../index.html">🏠 Home</a>
+    </nav>
   </header>
 
   <main class="container">
     
-    <div class="box" style="text-align: center;">
-      <h2>
-        <span class="pl-txt">1. Stwórz swój pierwszy plik</span>
-        <span class="en-txt">1. Create your first file</span>
-      </h2>
-      
-      <div class="file-illustration">
-        <span style="font-size: 30px;">🌐</span>
-        <div class="file-name-tag">index.html</div>
-      </div>
-
-      <p style="text-align: left; line-height: 1.6; margin-top: 15px;">
-        <span class="pl-txt">Główna strona internetowa musi nazywać się dokładnie <strong>index.html</strong>. Przeglądarki internetowe (takie jak Chrome czy Firefox) zawsze szukają pliku o tej nazwie, kiedy wchodzisz na jakikolwiek adres URL.</span>
-        <span class="en-txt">The main page of any website must be named exactly <strong>index.html</strong>. Web browsers (like Chrome or Firefox) always look for a file with this name when you visit any URL.</span>
+    <div class="box">
+      <h2>1. Headings (h1 - h6)</h2>
+      <p style="line-height: 1.6; margin-top: 10px;">
+        To create titles and subtitles on a page, we use tags from <span class="tag-badge">&lt;h1&gt;</span> to <span class="tag-badge">&lt;h6&gt;</span>. Remember the golden rule: the larger the number inside the tag, the smaller the text looks on screen!
       </p>
+
+      <div class="headings-visual">
+        <h1>&lt;h1&gt; Main Page Title <span>(Biggest importance)</span></h1>
+        <h2>&lt;h2&gt; Section Subtitle <span>(Medium)</span></h2>
+        <h3>&lt;h3&gt; Tiny subheader <span>(Small)</span></h3>
+      </div>
     </div>
 
     <div class="box">
-      <h2>
-        <span class="pl-txt">2. Wklej podstawową strukturę</span>
-        <span class="en-txt">2. Paste the basic structure</span>
-      </h2>
-      <p style="margin: 10px 0; line-height: 1.6;">
-        <span class="pl-txt">Każdy plik HTML potrzebuje kilku podstawowych linijek kodu, aby działał poprawnie. Skopiuj poniższy kod za pomocą przycisku i wklej go do swojego pliku:</span>
-        <span class="en-txt">Every HTML file needs a few basic lines of code to work properly. Copy the code below using the button and paste it into your file:</span>
+      <h2>2. Paragraphs and formatting</h2>
+      <p style="line-height: 1.6; margin-top: 10px;">
+        For common blocks of text we use the paragraph tag <span class="tag-badge">&lt;p&gt;</span>. You can also styles separate words inside using:
       </p>
+      <div style="margin-top: 15px; display: grid; gap: 10px;">
+        <div><span class="tag-badge">&lt;b&gt;</span> ➔ <strong>Bold</strong> text wrapper</div>
+        <div><span class="tag-badge">&lt;i&gt;</span> ➔ <em>Italicized</em> cursive text</div>
+      </div>
+    </div>
 
+    <div class="box">
+      <h2>3. Code Example</h2>
       <div class="code-container">
         <div class="code-header">
-          <span>HTML (index.html)</span>
-          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">
-            <span class="pl-txt">📋 Kopiuj</span>
-            <span class="en-txt">📋 Copy</span>
-          </button>
+          <span>HTML Editor Content</span>
+          <button class="btn" style="padding: 4px 8px; font-size: 12px; box-shadow: none;" onclick="copyCode(this)">📋 Copy</button>
         </div>
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;HTML For Beginners&lt;/title&gt;
-  &------- Zmień tekst poniżej! -------&gt;
+    &lt;title&gt;Headings Test&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;Witaj Świecie!&lt;/h1&gt;
-    &lt;p&gt;To moja pierwsza strona www.&lt;/p&gt;
+    &lt;h1&gt;Welcome to my site&lt;/h1&gt;
+    &lt;p&gt;This text contains &lt;b&gt;bolded&lt;/b&gt; letters.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
       </div>
     </div>
 
-    <div class="box">
-      <h2>
-        <span class="pl-txt">3. Co oznaczają te znaczniki?</span>
-        <span class="en-txt">3. What do these tags mean?</span>
-      </h2>
-      <p style="margin-bottom: 15px; line-height: 1.6;">
-        <span class="pl-txt">Kod HTML buduje się za pomocą tzw. <strong>znaczników (tags)</strong> ukrytych w nawiasach ostrokątnych <code>&lt; &gt;</code>. Większość z nich musimy otworzyć i zamknąć (za pomocą ukośnika <code>/</code>).</span>
-        <span class="en-txt">HTML code is built using so-called <strong>tags</strong> enclosed in angle brackets <code>&lt; &gt;</code>. Most of them need to be opened and then closed (using a forward slash <code>/</code>).</span>
-      </p>
-
-      <ul class="explanation-list">
-        <li>
-          <strong>&lt;!DOCTYPE html&gt;</strong> - 
-          <span class="pl-txt">Informuje przeglądarkę, że używasz najnowszej wersji języka (HTML5).</span>
-          <span class="en-txt">Informs the browser that you are using the newest version of the language (HTML5).</span>
-        </li>
-        <li>
-          <strong>&lt;html&gt; ... &lt;/html&gt;</strong> - 
-          <span class="pl-txt">To główny kontener. Wszystko, co piszesz, musi znaleźć się pomiędzy tymi znacznikami.</span>
-          <span class="en-txt">The main container. Everything you write must go between these tags.</span>
-        </li>
-        <li>
-          <strong>&lt;head&gt; ... &lt;/head&gt;</strong> - 
-          <span class="pl-txt">"Głowa" strony. Tutaj lądują rzeczy niewidoczne bezpośrednio na ekranie, jak tytuł karty w przeglądarce (<code>&lt;title&gt;</code>).</span>
-          <span class="en-txt">The "head" of the page. This is where things not directly visible on the screen go, like the browser tab title (<code>&lt;title&gt;</code>).</span>
-        </li>
-        <li>
-          <strong>&lt;body&gt; ... &lt;/body&gt;</strong> - 
-          <span class="pl-txt">"Ciało" strony. To tutaj piszesz wszystko, co użytkownik zobaczy na Twojej stronie (teksty, obrazki, linki).</span>
-          <span class="en-txt">The "body" of the page. This is where you write everything the user will actually see on your website (texts, images, links).</span>
-        </li>
-      </ul>
-    </div>
-
     <div style="text-align: center; margin-top: 30px;">
       <button id="finish-btn" class="btn" style="font-size: 18px; padding: 12px 24px;" onclick="finishCurrentLesson()">
-        <span class="pl-txt">Finish (Zaznacz jako ukończone ✔️)</span>
-        <span class="en-txt">Finish (Mark as completed ✔️)</span>
+        Finish (Mark as completed ✔️)
       </button>
     </div>
   </main>
 
   <script>
-    // SYSTEM JĘZYKOWY
-    function changeLanguage(lang) {
-      localStorage.setItem('site-lang', lang);
-      if (lang === 'en') {
-        document.body.className = 'lang-en';
-      } else {
-        document.body.className = 'lang-pl';
-      }
-      document.getElementById('langSelector').value = lang;
-      updateFinishButtonUI();
-    }
-
-    // KOPIOWANIE KODU Do Schowka
     function copyCode(button) {
       const codeBlock = button.parentElement.nextElementSibling;
-      const textToCopy = codeBlock.innerText;
-
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const isEn = localStorage.getItem('site-lang') === 'en';
-        button.innerText = isEn ? "✓ Copied!" : "✓ Skopiowano!";
-        setTimeout(() => {
-          button.innerText = isEn ? "📋 Copy" : "📋 Kopiuj";
-        }, 2000);
+      navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+        button.innerText = "✓ Copied!";
+        setTimeout(() => { button.innerText = "📋 Copy"; }, 2000);
       });
     }
 
-    // UKOŃCZENIE LEKCJI (Zapis do LocalStorage)
     function finishCurrentLesson() {
-      localStorage.setItem('lesson-1', 'true');
-      updateFinishButtonUI();
-      
-      // Powrót do listy lekcji po sekundzie
-      setTimeout(() => {
-        window.location.href = "all-lessons.html";
-      }, 1000);
-    }
-
-    function updateFinishButtonUI() {
+      localStorage.setItem('lesson-2', 'true');
       const btn = document.getElementById('finish-btn');
-      const isFinished = localStorage.getItem('lesson-1') === 'true';
-      const isEn = localStorage.getItem('site-lang') === 'en';
-
-      if (isFinished) {
-        btn.innerText = isEn ? "Completed! 🎉" : "Ukończono! 🎉";
-        btn.style.background = "#d4edda";
-      } else {
-        btn.innerHTML = isEn ? 'Finish (Mark as completed ✔️)' : 'Finish (Zaznacz jako ukończone ✔️)';
-        btn.style.background = "#fff";
-      }
+      btn.innerText = "Completed! 🎉";
+      btn.style.background = "#d4edda";
+      setTimeout(() => { window.location.href = "all-lessons.html"; }, 1000);
     }
 
-    // Przywracanie stanu po załadowaniu podstrony
     document.addEventListener("DOMContentLoaded", () => {
-      const savedLang = localStorage.getItem('site-lang') || 'pl';
-      changeLanguage(savedLang);
+      if(localStorage.getItem('lesson-2') === 'true') {
+        const btn = document.getElementById('finish-btn');
+        btn.innerText = "Completed! 🎉";
+        btn.style.background = "#d4edda";
+      }
     });
   </script>
 
