@@ -19,46 +19,55 @@
   </header>
 
   <main class="container">
+    
     <div class="box">
       <h2>Creating an index.html file</h2>
-      <p style="margin: 15px 0; line-height: 1.6; font-size: 15px;">
-        To create your first website framework, you need to set up a plain standard text file and save it with an <code>.html</code> file extension. The main default page of any server node or local website workspace is always named <code>index.html</code>.
+      <p style="margin: 15px 0; line-height: 1.6; font-size: 16px;">
+        To create your first website framework, you need to set up a plain standard text file and save it with an <strong>.html</strong> file extension. 
+      </p>
+      <p style="margin: 15px 0; line-height: 1.6; font-size: 16px;">
+        The main default page of any server node or local website website project is always named <strong>index.html</strong>. Without this exact name, web browsers won't know which file to open first!
       </p>
       
-      <div style="text-align: center; margin: 30px 0;">
-        <div style="display: inline-block; padding: 25px; border: 4px dashed #000; background: #fff; border-radius: 8px;">
-          <span style="font-size: 50px;">📄</span>
-          <p style="font-weight: bold; margin-top: 8px; font-family: monospace;">index.html</p>
+      <div style="text-align: center; margin: 35px 0;">
+        <div style="display: inline-block; padding: 25px 40px; border: 4px dashed #000; background: #fff; border-radius: 12px; box-shadow: 4px 4px 0px #000;">
+          <span style="font-size: 60px;">📄</span>
+          <p style="font-weight: bold; margin-top: 10px; font-family: monospace; font-size: 18px;">index.html</p>
+          <p style="font-size: 12px; color: #666; margin-top: 5px;">Ready HTML file</p>
         </div>
       </div>
 
-      <p style="line-height: 1.6; font-size: 15px;">
-        <strong>Task:</strong> Open your Live Workspace, ensure the file tab says <code>index.html</code>, and type your first heading inside the body tag!
+      <p style="line-height: 1.6; font-size: 16px; background: #fffde8; padding: 15px; border-left: 6px solid #ff9f43;">
+        <strong>Your First Task:</strong> Go to your <strong>Workspace</strong>, clear any text using the "Clean" button, and write down a simple text. Then come back here to finish the lesson!
       </p>
     </div>
 
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #fffde8; flex-wrap: wrap; gap: 15px;">
-      <span style="font-weight: bold;">Did you complete all assignment practices?</span>
+    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc; flex-wrap: wrap; gap: 15px;">
+      <span style="font-weight: bold; font-size: 15px;">Did you complete all assignment practices?</span>
       <button id="finishBtn" class="btn" style="background: #fff; font-size: 14px;" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
     </div>
+
   </main>
 
   <script>
+    // Funkcja zapisująca ukończenie lekcji w pamięci przeglądarki
     function markFinished() {
       localStorage.setItem("lesson-1-finished", "true");
       const btn = document.getElementById("finishBtn");
       btn.innerText = "Lesson Completed! ✔️";
       btn.style.backgroundColor = "#55efc4";
+      btn.style.boxShadow = "none";
       btn.disabled = true;
       btn.style.cursor = "default";
     }
 
-    // Sprawdzenie przy wejściu na stronę, czy użytkownik już wcześniej jej nie kliknął
+    // Automatyczne sprawdzanie po wejściu na stronę
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("lesson-1-finished") === "true") {
         const btn = document.getElementById("finishBtn");
         btn.innerText = "Lesson Completed! ✔️";
         btn.style.backgroundColor = "#55efc4";
+        btn.style.boxShadow = "none";
         btn.disabled = true;
         btn.style.cursor = "default";
       }
