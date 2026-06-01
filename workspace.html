@@ -23,30 +23,35 @@
     <div class="workspace-grid">
       
       <div class="panel">
-        <div class="panel-header">
-          <span>📝 index.html</span>
+        <div class="panel-header-ide">
+          <div class="file-tab">📝 index.html</div>
           <button class="btn" style="padding: 2px 8px; font-size: 12px; box-shadow: none;" onclick="clearWorkspace()">❌ Clean</button>
         </div>
-        <textarea id="codeEditor" class="workspace-textarea" placeholder="Write your HTML code here..." oninput="updatePreview()"><!DOCTYPE html>
+        <textarea id="codeEditor" class="workspace-textarea" placeholder="Write HTML here..." oninput="updatePreview()"><!DOCTYPE html>
 <html>
   <head>
-    <title>My Sandbox</title>
+    <title>My Live Preview Website</title>
   </head>
   <body>
     <h1>Hello World! 🎉</h1>
-    <p>Start editing this file to see live changes on the right.</p>
+    <p>Try changing this code to see instantaneous rendering updates.</p>
   </body>
 </html></textarea>
       </div>
 
-      <div class="panel">
-        <div class="browser-bar">
-          <div class="browser-dots">
-            <div class="browser-dot red"></div>
-            <div class="browser-dot yellow"></div>
-            <div class="browser-dot green"></div>
+      <div class="panel preview-panel">
+        <div class="browser-chrome-bar">
+          <div class="browser-tabs-row">
+            <div id="tabTitle" class="browser-tab-active">Loading...</div>
           </div>
-          <div class="browser-address">localhost:3000/workspace.html</div>
+          <div class="browser-navigation-row">
+            <div class="browser-dots">
+              <div class="browser-dot red"></div>
+              <div class="browser-dot yellow"></div>
+              <div class="browser-dot green"></div>
+            </div>
+            <div class="browser-address-input">localhost:3000/workspace.html</div>
+          </div>
         </div>
         <iframe id="livePreview" class="preview-iframe"></iframe>
       </div>
@@ -64,6 +69,7 @@
   <script>
     const editor = document.getElementById('codeEditor');
     const preview = document.getElementById('livePreview');
+    const tabTitleElement = document.getElementById('tabTitle');
 
     function updatePreview() {
       const code = editor.value;
@@ -71,11 +77,23 @@
       previewDocument.open();
       previewDocument.write(code);
       previewDocument.close();
+      
+      // FIX: Szukanie tagu <title> w kodzie użytkownika i aktualizacja karty przeglądarki
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(code, 'text/html');
+      const parsedTitle = doc.querySelector('title');
+      
+      if (parsedTitle && parsedTitle.innerText.trim() !== "") {
+        tabTitleElement.innerText = parsedTitle.innerText;
+      } else {
+        tabTitleElement.innerText = "Untitled Page";
+      }
+
       localStorage.setItem('workspace-code', code);
     }
 
     function clearWorkspace() {
-      if(confirm("Clear all your current code?")) {
+      if(confirm("Clear workspace content?")) {
         editor.value = "";
         updatePreview();
       }
