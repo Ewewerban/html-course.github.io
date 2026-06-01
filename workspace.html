@@ -13,8 +13,8 @@
       <h1>🛠️ Live Workspace</h1>
     </div>
     <nav style="display: flex; gap: 10px;">
-      <button class="btn" onclick="openCodeBook()" style="background: #ffeaa7;">📖 Code Book</button>
-      <a href="index.html">🏠 Main Page</a>
+      <a href="codebook.html" style="background: #ffeaa7;">📖 Code Book</a>
+      <a href="index.html">Main page ➔</a>
     </nav>
   </header>
 
@@ -24,34 +24,36 @@
       
       <div class="panel">
         <div class="panel-header">
-          <span>📝 Code</span>
-          <button class="btn" style="padding: 2px 8px; font-size: 12px;" onclick="clearWorkspace()">❌ Clean</button>
+          <span>📝 index.html</span>
+          <button class="btn" style="padding: 2px 8px; font-size: 12px; box-shadow: none;" onclick="clearWorkspace()">❌ Clean</button>
         </div>
-        <textarea id="codeEditor" class="workspace-textarea" placeholder="Write your HTML here..." oninput="updatePreview()"><!DOCTYPE html>
+        <textarea id="codeEditor" class="workspace-textarea" placeholder="Write your HTML code here..." oninput="updatePreview()"><!DOCTYPE html>
 <html>
   <head>
-    <style>
-      body { font-family: sans-serif; text-align: center; padding-top: 30px; }
-      h1 { color: #ff9f43; }
-    </style>
+    <title>My Sandbox</title>
   </head>
   <body>
     <h1>Hello World! 🎉</h1>
-    <p>Change this code to see the live updates below!</p>
+    <p>Start editing this file to see live changes on the right.</p>
   </body>
 </html></textarea>
       </div>
 
       <div class="panel">
-        <div class="panel-header">
-          <span>👁️ Preview</span>
+        <div class="browser-bar">
+          <div class="browser-dots">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+          </div>
+          <div class="browser-address">localhost:3000/workspace.html</div>
         </div>
         <iframe id="livePreview" class="preview-iframe"></iframe>
       </div>
 
     </div>
 
-    <div style="text-align: center; margin-top: 10px;">
+    <div style="text-align: center; margin-top: 20px;">
       <button class="btn" style="font-size: 16px; background: #d4edda; padding: 12px 24px;" onclick="downloadHTML()">
         📥 Download index.html
       </button>
@@ -59,51 +61,26 @@
 
   </main>
 
-  <div id="codeBookModal" class="modal">
-    <div class="modal-content">
-      <h3 style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
-        <span>📖 Code Book Snippets</span>
-        <button class="btn" style="padding: 2px 8px;" onclick="closeCodeBook()">X</button>
-      </h3>
-      <p style="font-size: 13px; margin-bottom: 15px; color: #555;">Click any code fragment below to easily copy it into your memory!</p>
-      
-      <div class="box" style="padding: 10px; cursor: pointer; background: #fafafa;" onclick="insertSnippet(1)">
-        <strong>Basic Boilerplate</strong>
-        <p style="font-size: 11px; color: #777;">Full HTML structural framework</p>
-      </div>
-      
-      <div class="box" style="padding: 10px; cursor: pointer; background: #fafafa;" onclick="insertSnippet(2)">
-        <strong>Text Formatting</strong>
-        <p style="font-size: 11px; color: #777;">Headers, bold paragraphs and formatting</p>
-      </div>
-    </div>
-  </div>
-
   <script>
     const editor = document.getElementById('codeEditor');
     const preview = document.getElementById('livePreview');
 
-    // Live Preview generator
     function updatePreview() {
       const code = editor.value;
       const previewDocument = preview.contentDocument || preview.contentWindow.document;
       previewDocument.open();
       previewDocument.write(code);
       previewDocument.close();
-      
-      // Ważne: zapamiętuje kod nawet po odświeżeniu witryny!
       localStorage.setItem('workspace-code', code);
     }
 
-    // Czyszczenie
     function clearWorkspace() {
-      if(confirm("Are you sure you want to clean your workspace?")) {
+      if(confirm("Clear all your current code?")) {
         editor.value = "";
         updatePreview();
       }
     }
 
-    // Pobieranie jako plik tekstowy index.html
     function downloadHTML() {
       const code = editor.value;
       const blob = new Blob([code], { type: 'text/html' });
@@ -115,21 +92,6 @@
       document.body.removeChild(a);
     }
 
-    // Obsługa Code Book
-    function openCodeBook() { document.getElementById('codeBookModal').style.display = 'flex'; }
-    function closeCodeBook() { document.getElementById('codeBookModal').style.display = 'none'; }
-
-    function insertSnippet(type) {
-      if (type === 1) {
-        navigator.clipboard.writeText(`<!DOCTYPE html>\n<html>\n<head>\n  <title>Page Title</title>\n</head>\n<body>\n  <h1>My First Website</h1>\n</body>\n</html>`);
-      } else if (type === 2) {
-        navigator.clipboard.writeText(`<h1>Heading 1</h1>\n<h2>Heading 2</h2>\n<p>This is a <b>bold</b> and <i>italic</i> paragraph.</p>`);
-      }
-      alert("Snippet copied to clipboard! You can now paste it into the code editor.");
-      closeCodeBook();
-    }
-
-    // Przywracanie kodu przy otwarciu okna
     document.addEventListener("DOMContentLoaded", () => {
       const savedCode = localStorage.getItem('workspace-code');
       if (savedCode !== null) {
