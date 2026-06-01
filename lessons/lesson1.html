@@ -12,8 +12,8 @@
     <div class="logo-area">
       <h1>Lesson 1</h1>
     </div>
-    <nav>
-      <a href="../workspace.html" target="_blank" style="background: #ffeaa7;">🛠️ Open Workspace</a>
+    <nav style="display: flex; gap: 10px;">
+      <a href="../workspace.html" style="background: #ffeaa7;">🛠️ Workspace</a>
       <a href="all-lessons.html">📋 All lessons</a>
     </nav>
   </header>
@@ -21,21 +21,25 @@
   <main class="container">
     <div class="box">
       <h2>Creating an index.html file</h2>
-      <p style="margin: 15px 0; line-height: 1.6;">
-        To create your first website framework, you need to set up a plain standard text file and save it with an <code>.html</code> file extension. The main default page of any server node is always named <code>index.html</code>.
+      <p style="margin: 15px 0; line-height: 1.6; font-size: 15px;">
+        To create your first website framework, you need to set up a plain standard text file and save it with an <code>.html</code> file extension. The main default page of any server node or local website workspace is always named <code>index.html</code>.
       </p>
       
       <div style="text-align: center; margin: 30px 0;">
-        <div style="display: inline-block; padding: 20px; border: 3px dashed #000; background: #fff;">
+        <div style="display: inline-block; padding: 25px; border: 4px dashed #000; background: #fff; border-radius: 8px;">
           <span style="font-size: 50px;">📄</span>
-          <p style="font-weight: bold; margin-top: 5px;">index.html</p>
+          <p style="font-weight: bold; margin-top: 8px; font-family: monospace;">index.html</p>
         </div>
       </div>
+
+      <p style="line-height: 1.6; font-size: 15px;">
+        <strong>Task:</strong> Open your Live Workspace, ensure the file tab says <code>index.html</code>, and type your first heading inside the body tag!
+      </p>
     </div>
 
-    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #f8fafc;">
-      <span>Did you complete all assignment practices?</span>
-      <button id="finishBtn" class="btn" style="background: #fff;" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
+    <div class="box" style="display: flex; justify-content: space-between; align-items: center; background: #fffde8; flex-wrap: wrap; gap: 15px;">
+      <span style="font-weight: bold;">Did you complete all assignment practices?</span>
+      <button id="finishBtn" class="btn" style="background: #fff; font-size: 14px;" onclick="markFinished()">Finish Lesson (mark Check) 🔘</button>
     </div>
   </main>
 
@@ -46,14 +50,17 @@
       btn.innerText = "Lesson Completed! ✔️";
       btn.style.backgroundColor = "#55efc4";
       btn.disabled = true;
+      btn.style.cursor = "default";
     }
 
+    // Sprawdzenie przy wejściu na stronę, czy użytkownik już wcześniej jej nie kliknął
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("lesson-1-finished") === "true") {
         const btn = document.getElementById("finishBtn");
         btn.innerText = "Lesson Completed! ✔️";
         btn.style.backgroundColor = "#55efc4";
         btn.disabled = true;
+        btn.style.cursor = "default";
       }
     });
   </script>
