@@ -33,7 +33,7 @@ body {
 
 /* --- WSPÓLNE KOMPONENTY (Styl Retro / Komiks) --- */
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -93,84 +93,12 @@ nav a:hover, .btn:hover {
   box-shadow: 4px 4px 0px #000;
 }
 
-nav a:active, .btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #000;
-}
-
-/* --- STRONA GŁÓWNA LAYOUT --- */
-.main-layout {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .main-layout { grid-template-columns: 1fr; }
-}
-
-.hero-box {
-  text-align: center;
-  background: #fff9e6;
-}
-
-.author-avatar {
-  width: 60px;
-  height: 60px;
-  border: 3px solid #000;
-  border-radius: 50%;
-  background: #ddd;
-  margin: 10px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-}
-
-/* --- SPIS LEKCJI GRID --- */
-.lessons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.lesson-card.finished-card {
-  background: #d4edda;
-}
-
-/* --- OKIENKO NA KOD --- */
-.code-container {
-  background: #2d3436;
-  border: 4px solid #000;
-  border-radius: 12px;
-  box-shadow: 5px 5px 0px #000;
-  overflow: hidden;
-  margin: 20px 0;
-}
-
-.code-header {
-  background: #1e272e;
-  padding: 10px 15px;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 3px solid #000;
-}
-
-.code-container pre {
-  padding: 15px;
-  overflow-x: auto;
-  color: #00ff00;
-  font-family: monospace;
-}
-
-/* --- WORKSPACE LAYOUT (NOWOŚĆ) --- */
+/* --- WORKSPACE BROWSER LOOK (NOWOŚĆ) --- */
 .workspace-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  height: 500px;
+  height: 550px;
   margin-bottom: 20px;
 }
 
@@ -198,16 +126,52 @@ nav a:active, .btn:active {
   align-items: center;
 }
 
+/* Imitacja paska przeglądarki */
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #eee;
+  padding: 6px 12px;
+  border-bottom: 4px solid #000;
+}
+
+.browser-dots {
+  display: flex;
+  gap: 5px;
+}
+.browser-dot {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid #000;
+  border-radius: 50%;
+}
+.browser-dot.red { background: #ff7675; }
+.browser-dot.yellow { background: #ffeaa7; }
+.browser-dot.green { background: #55efc4; }
+
+.browser-address {
+  flex-grow: 1;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 12px;
+  color: #555;
+  font-family: monospace;
+}
+
 .workspace-textarea {
   width: 100%;
   height: 100%;
   padding: 15px;
   border: none;
   resize: none;
-  font-family: monospace;
+  font-family: 'Courier New', monospace;
   font-size: 14px;
   outline: none;
-  background: #fafafa;
+  background: #1e1e1e;
+  color: #fff;
 }
 
 .preview-iframe {
@@ -217,25 +181,46 @@ nav a:active, .btn:active {
   background: #fff;
 }
 
-/* Okno modalne Code Book */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: #fff;
+/* --- OKIENKO NA KOD (W ŚCIĄGAWKACH) --- */
+.code-container {
+  background: #2d3436;
   border: 4px solid #000;
   border-radius: 12px;
-  padding: 20px;
-  max-width: 500px;
-  width: 90%;
-  box-shadow: 8px 8px 0px #000;
+  box-shadow: 5px 5px 0px #000;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.code-header {
+  background: #1e272e;
+  padding: 10px 15px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #000;
+}
+
+.code-container pre {
+  padding: 15px;
+  overflow-x: auto;
+  color: #00ff00;
+  font-family: monospace;
+}
+
+/* --- LISTA CODE BOOK --- */
+.codebook-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+.codebook-item {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.codebook-item:hover {
+  background: #fff9e6;
+  transform: scale(1.01);
 }
 
 /* --- STOPKA --- */
@@ -245,17 +230,4 @@ footer {
   padding: 20px;
   text-align: center;
   margin-top: 50px;
-}
-
-.footer-links {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer-links a {
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
 }
